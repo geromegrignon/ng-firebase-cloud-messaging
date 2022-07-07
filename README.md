@@ -103,3 +103,34 @@ Nx Cloud pairs with Nx in order to enable you to build and test code more rapidl
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
 Visit [Nx Cloud](https://nx.app/) to learn more.
+
+
+## Steps
+
+## Install AngularFire
+
+ - run `ng add @angular/fire`
+ - choose **deploy** and **cloud messaging** options
+ - select an existing logged in firebase account or log in
+ - choose an existing firebase project or create a new one
+ - choose default hosting solution
+ - choose default app solution
+
+### Files
+
+- *.firebaserc* defining rules for linked firebase projects
+- *firebase.json* defining rules about firebase features (hosting here)
+
+### Updated files
+
+- *AppModule* importing stuff
+- *environment* adding firebase config
+
+
+## TODO : prévoir changement config GCP pour autoriser notifications
+
+## BackGround message
+
+- create a service worker *firebase-messaging-sw.js* file.
+- initialize firebase using the config of your project
+- listen to background message

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-firebase-cloud-messaging": {
+      "hosting": {
+        "client": [
+          "ng-firebase-cloud-messaging"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-firebase-cloud-messaging"
+  }
+}

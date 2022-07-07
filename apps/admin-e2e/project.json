@@ -1,17 +1,17 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/client-e2e/src",
+  "sourceRoot": "apps/admin-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/client-e2e/cypress.json",
-        "devServerTarget": "client:serve:development"
+        "cypressConfig": "apps/admin-e2e/cypress.json",
+        "devServerTarget": "admin:serve:development"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "client:serve:production"
+          "devServerTarget": "admin:serve:production"
         }
       }
     },
@@ -22,13 +22,13 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "apps/client-e2e/**/*.{js,ts}"
+          "apps/admin-e2e/**/*.{js,ts}"
         ]
       }
     }
   },
   "tags": [],
   "implicitDependencies": [
-    "client"
+    "admin"
   ]
 }
