@@ -134,3 +134,16 @@ Visit [Nx Cloud](https://nx.app/) to learn more.
 - create a service worker *firebase-messaging-sw.js* file.
 - initialize firebase using the config of your project
 - listen to background message
+
+- add *src/firebase-messaging-sw.js* to the assets in angular.json
+- add service worker registration
+- generate vapidkey on firebase console
+- 
+- 
+- run *ng deploy --preview*
+
+- open firebase console (console.firebase.google.com)
+- open your project
+- select cloud messaging feature
+- click on 'send your first message'
+- fill the title and text fields

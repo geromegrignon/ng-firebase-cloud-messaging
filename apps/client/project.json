@@ -93,16 +93,6 @@
         "jestConfig": "apps/client/jest.config.ts",
         "passWithNoTests": true
       }
-    },
-    "deploy": {
-      "executor": "@angular/fire:deploy",
-      "options": {
-        "prerender": false,
-        "ssr": false,
-        "browserTarget": "client:build:production",
-        "firebaseProject": "ng-firebase-cloud-messaging",
-        "firebaseHostingSite": "ng-firebase-cloud-messaging"
-      }
     }
   },
   "tags": []

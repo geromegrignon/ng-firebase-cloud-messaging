@@ -8,6 +8,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,8 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
     MatCardModule,
     MatSlideToggleModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideMessaging(() => getMessaging())
+    provideMessaging(() => getMessaging()),
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

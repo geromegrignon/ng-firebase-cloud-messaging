@@ -7,7 +7,8 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "deploy:client": "ng deploy --project=client"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
     "@angular/material": "^14.0.4",
     "@angular/platform-browser": "~14.0.0",
     "@angular/platform-browser-dynamic": "~14.0.0",
+    "@angular/pwa": "^14.0.5",
     "@angular/router": "~14.0.0",
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",

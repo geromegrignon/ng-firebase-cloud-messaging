@@ -1,11 +1,809 @@
 {
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
-  "version": 2,
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "npmScope": "ng-firebase-cloud-messaging",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "cli": {
+    "packageManager": "npm",
+    "analytics": "804df03c-2d6e-424b-82b4-da050c683570"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
+      }
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ]
+    }
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
+  },
+  "defaultProject": "client",
   "projects": {
-    "admin": "apps/admin",
-    "admin-e2e": "apps/admin-e2e",
-    "client": "apps/client",
-    "client-e2e": "apps/client-e2e",
-    "server": "apps/server"
-  }
+    "client-e2e": {
+      "root": "apps/client-e2e",
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
+      "sourceRoot": "apps/client-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/client-e2e/cypress.json",
+            "devServerTarget": "client:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "client:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "options": {
+            "lintFilePatterns": [
+              "apps/client-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": [
+        "client"
+      ],
+      "files": [
+        {
+          "file": "apps/client-e2e/.eslintrc.json",
+          "hash": "4c5989b23b5aa8cc7aba2a07d1ae7daee19c1555"
+        },
+        {
+          "file": "apps/client-e2e/cypress.json",
+          "hash": "a9f65b1ffc796e1187ce63138b49369b1dbdf8bf"
+        },
+        {
+          "file": "apps/client-e2e/project.json",
+          "hash": "1582a2fb0c8647b010e456cb47d42d61fdda7d3b"
+        },
+        {
+          "file": "apps/client-e2e/src/fixtures/example.json",
+          "hash": "294cbed6ce9e0b948b787452e8676aee486cb3be"
+        },
+        {
+          "file": "apps/client-e2e/src/integration/app.spec.ts",
+          "hash": "dee0e0bbc9a573334e1e8ef7604f499796c04609"
+        },
+        {
+          "file": "apps/client-e2e/src/support/app.po.ts",
+          "hash": "32934246969c2ecb827ac05677785933a707a54d"
+        },
+        {
+          "file": "apps/client-e2e/src/support/commands.ts",
+          "hash": "310f1fa0e043ffebbbcf575c5a4d17f13a6b14d6"
+        },
+        {
+          "file": "apps/client-e2e/src/support/index.ts",
+          "hash": "3d469a6b6cf31eb66117d73e278bcf74f398f1db"
+        },
+        {
+          "file": "apps/client-e2e/tsconfig.json",
+          "hash": "e326af64830afa10581f5021b17c39f891b35fb4"
+        }
+      ]
+    },
+    "admin-e2e": {
+      "root": "apps/admin-e2e",
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
+      "sourceRoot": "apps/admin-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/admin-e2e/cypress.json",
+            "devServerTarget": "admin:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "admin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "options": {
+            "lintFilePatterns": [
+              "apps/admin-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": [
+        "admin"
+      ],
+      "files": [
+        {
+          "file": "apps/admin-e2e/.eslintrc.json",
+          "hash": "696cb8b12127425419f6d2809c5f15a5963d86de"
+        },
+        {
+          "file": "apps/admin-e2e/cypress.json",
+          "hash": "89ca513df118e7c0d568a87062273839d19762d2"
+        },
+        {
+          "file": "apps/admin-e2e/project.json",
+          "hash": "0b582627a70871ddb3616a411439af4e52c15bb0"
+        },
+        {
+          "file": "apps/admin-e2e/src/fixtures/example.json",
+          "hash": "294cbed6ce9e0b948b787452e8676aee486cb3be"
+        },
+        {
+          "file": "apps/admin-e2e/src/integration/app.spec.ts",
+          "hash": "a7c1a6c1c94e4e8864e960621fab423280614fc6"
+        },
+        {
+          "file": "apps/admin-e2e/src/support/app.po.ts",
+          "hash": "32934246969c2ecb827ac05677785933a707a54d"
+        },
+        {
+          "file": "apps/admin-e2e/src/support/commands.ts",
+          "hash": "310f1fa0e043ffebbbcf575c5a4d17f13a6b14d6"
+        },
+        {
+          "file": "apps/admin-e2e/src/support/index.ts",
+          "hash": "3d469a6b6cf31eb66117d73e278bcf74f398f1db"
+        },
+        {
+          "file": "apps/admin-e2e/tsconfig.json",
+          "hash": "e326af64830afa10581f5021b17c39f891b35fb4"
+        }
+      ]
+    },
+    "client": {
+      "root": "apps/client",
+      "projectType": "application",
+      "sourceRoot": "apps/client/src",
+      "prefix": "ng-firebase-cloud-messaging",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/client",
+            "index": "apps/client/src/index.html",
+            "main": "apps/client/src/main.ts",
+            "polyfills": "apps/client/src/polyfills.ts",
+            "tsConfig": "apps/client/tsconfig.app.json",
+            "assets": [
+              "apps/client/src/favicon.ico",
+              "apps/client/src/assets",
+              "apps/client/src/firebase-messaging-sw.js"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/client/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/client/src/environments/environment.ts",
+                  "with": "apps/client/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production",
+          "dependsOn": [
+            "^build"
+          ]
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "client:build:production"
+            },
+            "development": {
+              "browserTarget": "client:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "client:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/client/**/*.ts",
+              "apps/client/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/client"
+          ],
+          "options": {
+            "jestConfig": "apps/client/jest.config.ts",
+            "passWithNoTests": true
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "client:build:production",
+            "firebaseProject": "ng-firebase-cloud-messaging",
+            "firebaseHostingSite": "ng-firebase-cloud-messaging"
+          }
+        }
+      },
+      "tags": [],
+      "files": [
+        {
+          "file": "apps/client/.browserslistrc",
+          "hash": "4f9ac26980c156a3d525267010d5f78144b43519"
+        },
+        {
+          "file": "apps/client/.eslintrc.json",
+          "hash": "bd7e45b75572c48722de3c724d4a9126ab22a5b2"
+        },
+        {
+          "file": "apps/client/jest.config.ts",
+          "hash": "7ed15f0839b5bbc934669493c4aa8a1219299106"
+        },
+        {
+          "file": "apps/client/project.json",
+          "hash": "88670341902c71bd5449cea225446a9fc1616599"
+        },
+        {
+          "file": "apps/client/src/app/app.component.css",
+          "hash": "7661b05d8e9b52c132c85a715fddf9656889eb17"
+        },
+        {
+          "file": "apps/client/src/app/app.component.html",
+          "hash": "816f60cb47c3c4dffde2517e9befb34a1fdf5794"
+        },
+        {
+          "file": "apps/client/src/app/app.component.spec.ts",
+          "hash": "4838b965cdddaa5a782bfcd5596d593bc21f86ac",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/client/src/app/app.component.ts",
+          "hash": "818577869ddbab7fef362b9466cfd318f79200db",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/client/src/app/app.module.ts",
+          "hash": "b24fd5c14add8f7c5c84e474409bd59f2458d94e",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser",
+            "npm:@angular/material",
+            "npm:@angular/fire"
+          ]
+        },
+        {
+          "file": "apps/client/src/assets/.gitkeep",
+          "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "file": "apps/client/src/environments/environment.prod.ts",
+          "hash": "2f8c08d8526a5c1b6c56dd1b2f564aa74209883d"
+        },
+        {
+          "file": "apps/client/src/environments/environment.ts",
+          "hash": "b6a8837fbfa1b207830e557b63ed66b30d308268"
+        },
+        {
+          "file": "apps/client/src/favicon.ico",
+          "hash": "317ebcb2336e0833a22dddf0ab287849f26fda57"
+        },
+        {
+          "file": "apps/client/src/firebase-messaging-sw.js",
+          "hash": "2f385c2cfcc2749f725549c26ae7c0295479e9d5"
+        },
+        {
+          "file": "apps/client/src/index.html",
+          "hash": "61c73bc24e25bd3d0d578649d0c7f98296af4feb"
+        },
+        {
+          "file": "apps/client/src/main.ts",
+          "hash": "d9a2e7e4a582e265db779363bd8b2492c43c141b",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser-dynamic"
+          ]
+        },
+        {
+          "file": "apps/client/src/polyfills.ts",
+          "hash": "e4555ed11fa2f217b8e4c744d564da4f7388b4c4",
+          "deps": [
+            "npm:zone.js"
+          ]
+        },
+        {
+          "file": "apps/client/src/styles.css",
+          "hash": "7e7239a2eeea2a25f548d2e04302921d28c2a27e"
+        },
+        {
+          "file": "apps/client/src/test-setup.ts",
+          "hash": "1100b3e8a6ed08f4b5c27a96471846d57023c320",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "apps/client/tsconfig.app.json",
+          "hash": "323b7c4110bfbc0a66c408db64b6013ffb0cd165"
+        },
+        {
+          "file": "apps/client/tsconfig.editor.json",
+          "hash": "20c4afdbf437457984afcb236d4b5e588aec858a"
+        },
+        {
+          "file": "apps/client/tsconfig.json",
+          "hash": "c756d84676bd8d116ad9dc12a173b10c44b4955f"
+        },
+        {
+          "file": "apps/client/tsconfig.spec.json",
+          "hash": "c5db02778f96a2a200d787c0a7b376fe0d6c36f7"
+        }
+      ]
+    },
+    "server": {
+      "root": "apps/server",
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
+      "sourceRoot": "apps/server/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:webpack",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/server",
+            "main": "apps/server/src/main.ts",
+            "tsConfig": "apps/server/tsconfig.app.json",
+            "assets": [
+              "apps/server/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/server/src/environments/environment.ts",
+                  "with": "apps/server/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          },
+          "dependsOn": [
+            "^build"
+          ]
+        },
+        "serve": {
+          "builder": "@nrwl/node:node",
+          "options": {
+            "buildTarget": "server:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "server:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "options": {
+            "lintFilePatterns": [
+              "apps/server/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/server"
+          ],
+          "options": {
+            "jestConfig": "apps/server/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": [],
+      "files": [
+        {
+          "file": "apps/server/.eslintrc.json",
+          "hash": "9d9c0db55bb1e91c5f2e7b64a02bc6bf69fc7cb5"
+        },
+        {
+          "file": "apps/server/jest.config.ts",
+          "hash": "756f039504cefae0d673eedaeb174140b7ab2416"
+        },
+        {
+          "file": "apps/server/project.json",
+          "hash": "7cfe6653d7e3eefcdad4808ae1b37f5a810dc40b"
+        },
+        {
+          "file": "apps/server/src/app/.gitkeep",
+          "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "file": "apps/server/src/app/app.controller.spec.ts",
+          "hash": "8a706af312d44ec9cc9928374ea1494de802a6fb",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/app/app.controller.ts",
+          "hash": "dff210a841eb3893066314660135eb0c534f041d",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/app/app.module.ts",
+          "hash": "6a9bc166d35090df009e0fa74bf4a9a9d740028a",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/app/app.service.spec.ts",
+          "hash": "c8208bc3a5fb0bbf63adfe5864d45ac634277d70",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/app/app.service.ts",
+          "hash": "3d5f5ed845d979b05d7f62cfac824bf4690b3561",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/assets/.gitkeep",
+          "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "file": "apps/server/src/environments/environment.prod.ts",
+          "hash": "c9669790be176ac85a5d8c11278875c2f52dc507"
+        },
+        {
+          "file": "apps/server/src/environments/environment.ts",
+          "hash": "a20cfe55731540eac839ab33f9ce1eaa6da50b16"
+        },
+        {
+          "file": "apps/server/src/main.ts",
+          "hash": "2268b6e1a2f4bc6860e8855f9425d3c432514cdb",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core"
+          ]
+        },
+        {
+          "file": "apps/server/tsconfig.app.json",
+          "hash": "91231e40197aba64805b8c86152fb7e496bb1c3a"
+        },
+        {
+          "file": "apps/server/tsconfig.json",
+          "hash": "63dbe35fb282d5f9ac4a724607173e6316269e29"
+        },
+        {
+          "file": "apps/server/tsconfig.spec.json",
+          "hash": "546f12877f7f05dd2e7b8782c7d6eae8189c34c0"
+        }
+      ]
+    },
+    "admin": {
+      "root": "apps/admin",
+      "projectType": "application",
+      "sourceRoot": "apps/admin/src",
+      "prefix": "ng-firebase-cloud-messaging",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/admin",
+            "index": "apps/admin/src/index.html",
+            "main": "apps/admin/src/main.ts",
+            "polyfills": "apps/admin/src/polyfills.ts",
+            "tsConfig": "apps/admin/tsconfig.app.json",
+            "assets": [
+              "apps/admin/src/favicon.ico",
+              "apps/admin/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/admin/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/admin/src/environments/environment.ts",
+                  "with": "apps/admin/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production",
+          "dependsOn": [
+            "^build"
+          ]
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "admin:build:production"
+            },
+            "development": {
+              "browserTarget": "admin:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "admin:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/admin/**/*.ts",
+              "apps/admin/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/admin"
+          ],
+          "options": {
+            "jestConfig": "apps/admin/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": [],
+      "files": [
+        {
+          "file": "apps/admin/.browserslistrc",
+          "hash": "4f9ac26980c156a3d525267010d5f78144b43519"
+        },
+        {
+          "file": "apps/admin/.eslintrc.json",
+          "hash": "bd7e45b75572c48722de3c724d4a9126ab22a5b2"
+        },
+        {
+          "file": "apps/admin/jest.config.ts",
+          "hash": "c3525faedcbb6208c1b95629d603c7e7f2b412bf"
+        },
+        {
+          "file": "apps/admin/project.json",
+          "hash": "06f53e8cf73fec1cc1442854558c34e37e27c903"
+        },
+        {
+          "file": "apps/admin/src/app/app.component.css",
+          "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "file": "apps/admin/src/app/app.component.html",
+          "hash": "a3838bfe7dee37557e6950294ba7afe190e4c294"
+        },
+        {
+          "file": "apps/admin/src/app/app.component.spec.ts",
+          "hash": "44b749119f2b9ab838fa92a21a4f051d6719d6b1",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/app.component.ts",
+          "hash": "932cf55e9289a59ceb01285127281c1812c3b2a3",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/app.module.ts",
+          "hash": "c0714319a8d7051c1b68dee1bb6043d53330a84a",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/nx-welcome.component.ts",
+          "hash": "bd07e30636da81e70647d7a5b3f1ccdd59bcd8e5",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/assets/.gitkeep",
+          "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "file": "apps/admin/src/environments/environment.prod.ts",
+          "hash": "c9669790be176ac85a5d8c11278875c2f52dc507"
+        },
+        {
+          "file": "apps/admin/src/environments/environment.ts",
+          "hash": "66998ae9a7c27359bc473c6d2aa0029dd1f4b700"
+        },
+        {
+          "file": "apps/admin/src/favicon.ico",
+          "hash": "317ebcb2336e0833a22dddf0ab287849f26fda57"
+        },
+        {
+          "file": "apps/admin/src/index.html",
+          "hash": "ec06a2da2cee1121859d345bc2618b238252ef4a"
+        },
+        {
+          "file": "apps/admin/src/main.ts",
+          "hash": "d9a2e7e4a582e265db779363bd8b2492c43c141b",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser-dynamic"
+          ]
+        },
+        {
+          "file": "apps/admin/src/polyfills.ts",
+          "hash": "e4555ed11fa2f217b8e4c744d564da4f7388b4c4",
+          "deps": [
+            "npm:zone.js"
+          ]
+        },
+        {
+          "file": "apps/admin/src/styles.css",
+          "hash": "7e7239a2eeea2a25f548d2e04302921d28c2a27e"
+        },
+        {
+          "file": "apps/admin/src/test-setup.ts",
+          "hash": "1100b3e8a6ed08f4b5c27a96471846d57023c320",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "apps/admin/tsconfig.app.json",
+          "hash": "323b7c4110bfbc0a66c408db64b6013ffb0cd165"
+        },
+        {
+          "file": "apps/admin/tsconfig.editor.json",
+          "hash": "20c4afdbf437457984afcb236d4b5e588aec858a"
+        },
+        {
+          "file": "apps/admin/tsconfig.json",
+          "hash": "c756d84676bd8d116ad9dc12a173b10c44b4955f"
+        },
+        {
+          "file": "apps/admin/tsconfig.spec.json",
+          "hash": "c5db02778f96a2a200d787c0a7b376fe0d6c36f7"
+        }
+      ]
+    }
+  },
+  "version": 1
 }
